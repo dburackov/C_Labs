@@ -1,4 +1,4 @@
-all: clear buildTest runTest
+all: buildTest runTest clear
 
 clear:
 	rd /s /q temp
