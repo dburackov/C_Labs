@@ -2,7 +2,9 @@
 #include <stdio.h>
 #include <assert.h>
 
-void test() {
+#undef main
+
+int main() {
     assert(solve(12) == 6);
     assert(solve(23) == 0);
     assert(solve(50) == 4);
@@ -21,11 +23,5 @@ void test() {
     assert(solve(64) == 0);
     assert(solve(32) == 2);
     printf("Good job! All tests passed!\n");
-}
-
-#undef main
-
-int main() {
-    test();
     return 0;
 }
