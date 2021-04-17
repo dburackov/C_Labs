@@ -6,7 +6,7 @@ int input() {
 	int result = 0;
 	while (result < 1 || result > MAX_INPUT_VALUE) {
 		while (!scanf("%d", &result)) {
-			while(getchar()!='\n');
+			while(getchar() != '\n');
 		}
 	}
 	return result;
