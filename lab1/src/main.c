@@ -42,6 +42,6 @@ int solve(int k) {
 
 int main() {
 	int k = input();
-	printf("%d", solve(k));
+	printf("%d\n", solve(k));
 	return 0;
 }
