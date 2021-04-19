@@ -13,6 +13,21 @@ double getDouble(double lowerBound, double upperBound, char* text) {
     return result;
 }
 
+int solveRecursively(double x, double eps, double decomposition, double factorial, int n) {
+    if (n == 1) {
+        x = x * PI / 180;
+        decomposition = x;
+    }
+    if (fabs(sin(x) - decomposition) > eps) {
+        ++n;
+        factorial *= 2 * (n - 1) * (2 * n - 1);
+        decomposition += pow(-1, n - 1) * pow(x, 2 * n - 1) / factorial;
+        return solveRecursively(x, eps, decomposition, factorial, n);
+    } else {
+        return n;
+    }
+}
+
 int solve(double x, double eps) {
     x = x * PI / 180;
     double sinx = sin(x);
