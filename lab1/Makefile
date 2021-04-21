@@ -1,11 +1,9 @@
-all: buildTest runTest clear
+all: test clear
 
 clear:
 	rd /s /q temp
 
-buildTest:
-	md temp
+test:
+	if not exist temp md temp
 	gcc -std=c89 -o temp/test -Dmain=defmain src/main.c src/test.c
-
-runTest:
 	temp/test
