@@ -1,54 +1,57 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
 
-#define PI 3.141592653
+#define FILENAME "input.txt"
+#define DEBUG_FILE "output.txt"
+#define MAX_WORD_LENGTH 200
 
-double getDouble(double lowerBound, double upperBound, char* text) {
-    double result = 0;
-    printf("Enter %s in the range %.0f to %.0f\n", text);
-    while (!scanf("%lf", &result) || result < lowerBound || result > upperBound) {
-        printf("Incorrect input! Try again.\n");
-        while (getchar() != '\n');
+void solve(char* file, int debug) {
+    FILE* text = fopen(file, "r");
+    int* count = malloc(sizeof(int) * MAX_WORD_LENGTH);
+    int i = 0;
+    for (; i < MAX_WORD_LENGTH; ++i) {
+        count[i] = 0;
     }
-    return result;
-}
-
-int solveRecursively(double x, double eps, double decomposition, double factorial, int n) {
-    if (n == 1) {
-        x = x * PI / 180;
-        decomposition = x;
-    }
-    if (fabs(sin(x) - decomposition) > eps) {
-        ++n;
-        factorial *= 2 * (n - 1) * (2 * n - 1);
-        decomposition += pow(-1, n - 1) * pow(x, 2 * n - 1) / factorial;
-        return solveRecursively(x, eps, decomposition, factorial, n);
-    } else {
-        return n;
-    }
-}
-
-int solve(double x, double eps) {
-    x = x * PI / 180;
-    double sinx = sin(x);
-    double decomposition = x;
-    double factorial = 1;
-    double powx = x;
-    int n = 1; 
-    while (fabs(sinx - decomposition) > eps) {
-        ++n;
-        factorial *= 2 * (n - 1) * (2 * n - 1);
-        powx *= x * x;  
-        if (n % 2 == 1) {
-            decomposition += powx / factorial;
+    char symbol;
+    int current = 0;
+    while ((symbol = fgetc(text)) != EOF) {
+        if (symbol >= 'A' && symbol <= 'Z' || symbol >= 'a' && symbol <= 'z') {
+            ++current;
         } else {
-            decomposition -= powx / factorial;
+            if (current < MAX_WORD_LENGTH) {
+                ++count[current];
+            }
+            current = 0;
         }
     }
-    return n;
+    if (current > 0 && current < MAX_WORD_LENGTH) {
+        ++count[current];
+    }
+    fclose(text);
+    if (debug) {
+        text = fopen(DEBUG_FILE, "w");
+        for (i = 1; i < MAX_WORD_LENGTH; ++i) {
+            if (count[i] > 0) {
+                fprintf(text, "%d %d\n", i, count[i]);
+            }
+        }
+        fclose(text);
+    } else {
+        for (i = 1; i < MAX_WORD_LENGTH; ++i) {
+            if (count[i] > 0) {
+                printf("%3d |", i);
+                int j = 0;
+                for (; j < count[i]; ++j) {
+                    printf("=");
+                }
+                printf(" %d\n", count[i]);
+            }
+        }
+    }
+    free(count);
 }
 
 int main() {
-    printf("%d\n", solve(getDouble(0, 90, "X"), getDouble(0, 2, "Eps")));
+    solve(FILENAME, 0);
     return 0;
 }

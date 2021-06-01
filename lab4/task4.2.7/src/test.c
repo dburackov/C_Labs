@@ -4,56 +4,28 @@
 
 #undef main
 
-int main() {
-    assert(solve(30, 0.01) == 2);
-    assert(solve(30, 0.1) == 1);
-    assert(solve(30, 0.0004) == 2);
-    assert(solve(30, 0.000003) == 3);
-    assert(solve(30, 0.00001) == 3);
-    assert(solve(30, 0.00000001) == 4);
-    assert(solve(30, 0.000000009) == 4);
-    assert(solve(30, 0.000000000021) == 5);
-    assert(solve(30, 0.0000000001) == 5);
-    assert(solve(30, 0.00000000003) == 5);
-    assert(solve(45, 0.1) == 1);
-    assert(solve(45, 0.09) == 1);
-    assert(solve(45, 0.01) == 2);
-    assert(solve(45, 0.004) == 2);
-    assert(solve(45, 0.001) == 3);
-    assert(solve(45, 0.000001) == 4);
-    assert(solve(45, 0.000000002) == 5);
-    assert(solve(45, 0.00000001) == 5);
-    assert(solve(60, 0.02) == 2);
-    assert(solve(60, 0.001) == 3);
-    assert(solve(60, 0.00001) == 4);
-    assert(solve(60, 0.000005) == 4);
-    assert(solve(60, 0.0000001) == 5);
-    assert(solve(60, 0.00000005) == 5);
+int fileCmp(char* file1, char* file2) {
+    FILE* f1 = fopen(file1, "r");
+    FILE* f2 = fopen(file2, "r");
+    char ch1 = '\0';
+    char ch2 = '\0';
+    while (ch1 == ch2 && !feof(f1) && !feof(f2)) {
+        ch1 = fgetc(f1);
+        ch2 = fgetc(f2);
+    }
+    return ch1 == ch2;
+} 
 
-    assert(solveRecursively(30, 0.01, 0, 1, 1) == 2);
-    assert(solveRecursively(30, 0.1, 0, 1, 1) == 1);
-    assert(solveRecursively(30, 0.0004, 0, 1, 1) == 2);
-    assert(solveRecursively(30, 0.000003, 0, 1, 1) == 3);
-    assert(solveRecursively(30, 0.00001, 0, 1, 1) == 3);
-    assert(solveRecursively(30, 0.00000001, 0, 1, 1) == 4);
-    assert(solveRecursively(30, 0.000000009, 0, 1, 1) == 4);
-    assert(solveRecursively(30, 0.000000000021, 0, 1, 1) == 5);
-    assert(solveRecursively(30, 0.0000000001, 0, 1, 1) == 5);
-    assert(solveRecursively(30, 0.00000000003, 0, 1, 1) == 5);
-    assert(solveRecursively(45, 0.1, 0, 1, 1) == 1);
-    assert(solveRecursively(45, 0.09, 0, 1, 1) == 1);
-    assert(solveRecursively(45, 0.01, 0, 1, 1) == 2);
-    assert(solveRecursively(45, 0.004, 0, 1, 1) == 2);
-    assert(solveRecursively(45, 0.001, 0, 1, 1) == 3);
-    assert(solveRecursively(45, 0.000001, 0, 1, 1) == 4);
-    assert(solveRecursively(45, 0.000000002, 0, 1, 1) == 5);
-    assert(solveRecursively(45, 0.00000001, 0, 1, 1) == 5);
-    assert(solveRecursively(60, 0.02, 0, 1, 1) == 2);
-    assert(solveRecursively(60, 0.001, 0, 1, 1) == 3);
-    assert(solveRecursively(60, 0.00001, 0, 1, 1) == 4);
-    assert(solveRecursively(60, 0.000005, 0, 1, 1) == 4);
-    assert(solveRecursively(60, 0.0000001, 0, 1, 1) == 5);
-    assert(solveRecursively(60, 0.00000005, 0, 1, 1) == 5);
-    printf("Good job! All tests passed!");
+int test(char* inputFile, char* answerFile) {
+    solve(inputFile, 1);
+    return fileCmp("output.txt", answerFile);
+}
+
+int main() {
+    assert(test("tests/test1.txt", "tests/answer1.txt") == 1);
+    assert(test("tests/test2.txt", "tests/answer2.txt") == 1);
+    assert(test("tests/test3.txt", "tests/answer3.txt") == 1);
+    assert(test("tests/test4.txt", "tests/answer4.txt") == 1);
+    printf("All tests pased\n");
     return 0;
 }
