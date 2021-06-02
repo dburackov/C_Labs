@@ -1,10 +1,16 @@
 name: C/C++ CI
 
-on: [push, pull_request]
-  
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  run:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
     - name: Fetch
       uses: actions/checkout@master
@@ -15,5 +21,3 @@ jobs:
         make
         cd ..
         done
-    - name: Upload
-      uses: codecov/codecov-action@v1
