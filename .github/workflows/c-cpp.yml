@@ -1,20 +1,13 @@
 name: C/C++ CI
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+on: [push, pull_request]
+  
 jobs:
-  build:
-
+  run:
     runs-on: ubuntu-latest
-
     steps:
     - name: Fetch
       uses: actions/checkout@master
-    - uses: actions/checkout@v2
     - name: test and compile
       run: |
         for d in */ ; do
