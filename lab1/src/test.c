@@ -22,5 +22,6 @@ int main() {
     assert(solve(128) == 3);
     assert(solve(64) == 0);
     assert(solve(32) == 2);
+    printf("Good job! All tests passed!\n");
     return 0;
 }
