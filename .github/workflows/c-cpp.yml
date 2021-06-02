@@ -14,7 +14,6 @@ jobs:
     steps:
     - name: Fetch
       uses: actions/checkout@master
-    - uses: actions/checkout@v2
     - name: test and compile
       run: |
         for d in */ ; do
