@@ -1,0 +1,18 @@
+name: C2.2
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: go to lab2/task2.2.6 and test
+      working-directory: ./lab2/task2.2.6
+      run: make
