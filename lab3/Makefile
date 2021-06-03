@@ -1,16 +1,16 @@
-all: test
+all: test 
 
 main:
-	gcc -std=c89 -o main main.c
-	./main
+	gcc -std=c89 -o bin/main main.c
+	./bin/main
 
 test:
-	gcc -std=c89 -o test -Dmain=defmain main.c test.c
-	./test < tests/in1.txt > ans1.txt
-	./test < tests/in2.txt > ans2.txt
-	./test < tests/in3.txt > ans3.txt
-	./test < tests/in4.txt > ans4.txt
-	diff tests/out1.txt ans1.txt
-	diff tests/out2.txt ans2.txt
-	diff tests/out3.txt ans3.txt
-	diff tests/out4.txt ans4.txt
+	gcc -std=c89 -o bin/test -Dmain=defmain main.c test.c
+	./bin/test < tests/in1.txt > bin/ans1.txt
+	./bin/test < tests/in2.txt > bin/ans2.txt
+	./bin/test < tests/in3.txt > bin/ans3.txt
+	./bin/test < tests/in4.txt > bin/ans4.txt
+	diff tests/out1.txt bin/ans1.txt
+	diff tests/out2.txt bin/ans2.txt
+	diff tests/out3.txt bin/ans3.txt
+	diff tests/out4.txt bin/ans4.txt
