@@ -5,12 +5,12 @@ main:
 	./src/main
 
 test:
-	gcc -std=c89 -o src/test -Dmain=defmain main.c test.c
-	./src/test < tests/in1.txt > src/ans1.txt
-	./src/test < tests/in2.txt > src/ans2.txt
-	./src/test < tests/in3.txt > src/ans3.txt
-	./src/test < tests/in4.txt > src/ans4.txt
-	diff tests/out1.txt src/ans1.txt
-	diff tests/out2.txt src/ans2.txt
-	diff tests/out3.txt src/ans3.txt
-	diff tests/out4.txt src/ans4.txt
+	gcc -std=c89 -o test -Dmain=defmain main.c test.c
+	./test < tests/in1.txt > ans1.txt
+	./test < tests/in2.txt > ans2.txt
+	./test < tests/in3.txt > ans3.txt
+	./test < tests/in4.txt > ans4.txt
+	diff tests/out1.txt ans1.txt
+	diff tests/out2.txt ans2.txt
+	diff tests/out3.txt ans3.txt
+	diff tests/out4.txt ans4.txt
