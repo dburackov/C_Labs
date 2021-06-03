@@ -1,8 +1,8 @@
 all: test
 
 main:
-	gcc -std=c89 -o src/main main.c
-	./src/main
+	gcc -std=c89 -o main main.c
+	./main
 
 test:
 	gcc -std=c89 -o test -Dmain=defmain main.c test.c
