@@ -5,6 +5,7 @@ main:
 	./bin/main
 
 test:
+	mkdir bin
 	gcc -std=c89 -o bin/test -Dmain=defmain main.c test.c
 	./bin/test < tests/in1.txt > bin/ans1.txt
 	./bin/test < tests/in2.txt > bin/ans2.txt
