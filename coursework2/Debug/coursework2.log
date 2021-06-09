@@ -1,0 +1,12 @@
+﻿  main.cpp
+d:\studies\coursework2\coursework2\button.h(37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\studies\coursework2\coursework2\button.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\studies\coursework2\coursework2\button.h(57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\studies\coursework2\coursework2\button.h(63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\studies\coursework2\coursework2\main.cpp(143): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\studies\coursework2\coursework2\main.cpp(175): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\studies\coursework2\coursework2\main.cpp(184): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\studies\coursework2\coursework2\main.cpp(189): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\studies\coursework2\coursework2\main.cpp(233): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\studies\coursework2\coursework2\main.cpp(244): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  coursework2.vcxproj -> D:\studies\coursework2\Debug\coursework2.exe
