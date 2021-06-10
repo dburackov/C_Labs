@@ -7,4 +7,3 @@ test:
 	g++ -ftest-coverage -fprofile-arcs -O0 -o test tourist.cpp test.cpp 
 	./test
 	gcov -abcfu tourist.cpp
-	gcov -abcfu main.cpp
