@@ -21,4 +21,6 @@ jobs:
     - name: Upload
       uses: codecov/codecov-action@v1
       with:
-        files: ./lab7/tourist.cpp.gcov
+        files: |
+          ./lab7/tourist.cpp.gcov
+          ./lab7/main.cpp.gcov
