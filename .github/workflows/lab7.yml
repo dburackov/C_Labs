@@ -1,0 +1,26 @@
+name: lab7
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Fetch
+      uses: actions/checkout@master
+    - uses: actions/checkout@v2
+    - name: test and compile
+      working-directory: ./lab7
+      run: make
+    - name: Upload
+      uses: codecov/codecov-action@v1
+      with:
+        files: |
+          ./lab7/main.cpp.gcov
+          ./lab7/tourist.cpp.gcov
